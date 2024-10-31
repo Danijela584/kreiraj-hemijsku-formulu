@@ -84,21 +84,4 @@ function loadGame() {
 function selectCation(index) {
     const cationButton = document.querySelector(`#cations button[data-index="${index}"]`);
     if (selectedCation === index) {
-        cationCount++;
-    } else {
-        selectedCation = index;
-        cationCount = 1;
-    }
-    cationButton.textContent = `${cationButton.dataset.cation}${cationCount > 1 ? cationCount : ''}`;
-    checkMatch();
-}
-
-function selectAnion(index) {
-    const anionButton = document.querySelector(`#anions button[data-index="${index}"]`);
-    if (selectedAnion === index) {
-        anionCount++;
-    } else {
-        selectedAnion = index;
-        anionCount = 1;
-    }
-    anionButton.textContent = `${anionButton.dataset.anion}${anionCount > 1 ? an
+        cationCount
