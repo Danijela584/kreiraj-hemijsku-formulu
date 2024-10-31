@@ -62,4 +62,43 @@ function loadGame() {
     const shuffledCations = [...compounds].sort(() => Math.random() - 0.5);
     const shuffledAnions = [...compounds].sort(() => Math.random() - 0.5);
 
-    shuffledCations.forEach((
+    shuffledCations.forEach((compound, index) => {
+        const cationButton = document.createElement('button');
+        cationButton.textContent = compound.cation;
+        cationButton.dataset.cation = compound.cation;
+        cationButton.dataset.index = index;
+        cationButton.onclick = () => selectCation(index);
+        cationDiv.appendChild(cationButton);
+    });
+
+    shuffledAnions.forEach((compound, index) => {
+        const anionButton = document.createElement('button');
+        anionButton.textContent = compound.anion;
+        anionButton.dataset.anion = compound.anion;
+        anionButton.dataset.index = index;
+        anionButton.onclick = () => selectAnion(index);
+        anionDiv.appendChild(anionButton);
+    });
+}
+
+function selectCation(index) {
+    const cationButton = document.querySelector(`#cations button[data-index="${index}"]`);
+    if (selectedCation === index) {
+        cationCount++;
+    } else {
+        selectedCation = index;
+        cationCount = 1;
+    }
+    cationButton.textContent = `${cationButton.dataset.cation}${cationCount > 1 ? cationCount : ''}`;
+    checkMatch();
+}
+
+function selectAnion(index) {
+    const anionButton = document.querySelector(`#anions button[data-index="${index}"]`);
+    if (selectedAnion === index) {
+        anionCount++;
+    } else {
+        selectedAnion = index;
+        anionCount = 1;
+    }
+    anionButton.textContent = `${anionButton.dataset.anion}${anionCount > 1 ? an
